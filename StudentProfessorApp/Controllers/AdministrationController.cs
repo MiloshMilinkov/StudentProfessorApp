@@ -1,12 +1,15 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using StudentProfessorApp.Areas.Identity.Data;
 using StudentProfessorApp.ViewModels;
 
 namespace StudentProfessorApp.Controllers
 {
+    [Authorize(Roles ="Professor")]
     public class AdministrationController: Controller
     {
+        
         private readonly RoleManager<IdentityRole> roleManager;
         private readonly UserManager<ApplicationUser> userManager;
         public AdministrationController(RoleManager<IdentityRole> roleManager,
